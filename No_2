@@ -1,0 +1,28 @@
+#include<cstdio>
+
+int main()
+{
+	int n;
+	int a[1000] = {0};
+	int school_num;
+	int score;
+	int Max_score;
+	int Max_school;
+	scanf_s("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf_s("%d%d", &school_num, &score);
+		a[school_num] += score;
+	}
+	Max_score = a[1];
+	Max_school = 1;
+	for (int j = 0; j < n; j++)
+	{
+		if (a[j] > Max_score)
+		{
+			Max_score = a[j];
+			Max_school = j;
+		}
+	}
+	printf("%d %d", Max_school, Max_score);
+}
