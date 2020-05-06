@@ -1,0 +1,60 @@
+#include<cstdio>
+#include<time.h>
+#include<iostream>
+
+using namespace std;
+bool isLeapYear(int year)
+{
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+	{
+		return true;
+	}
+	else
+		return false;
+}
+int main()
+{
+	int month[2][13] = { {0,30,28,31,30,31,30,31,31,30,31,30,31},
+		{0,30,29,31,30,31,30,31,31,30,31,30,31} };
+	int date1, date2;
+	int temp;
+	int year1, mon1, day1;
+	int year2, mon2, day2;
+	clock_t start,end;
+	//double timing;
+	while (scanf_s("%d %d", &date1, &date2) != EOF)
+	{
+		int gap = 1;
+		start = clock();
+		if (date1 > date2)
+		{
+			temp = date1;
+			date1 = date2;
+			date2 = temp;
+		}
+		year1 = date1 / 10000;
+		year2 = date2 / 10000;
+		mon1 = (date1 / 100) % 100;
+		mon2 = (date2 / 100) % 100;
+		day1 = date1 % 100;
+		day2 = date2 % 100;
+		while (year1 < year2 || mon1 < mon2 || day1 < day2)
+		{
+			day1++;
+			if (day1 == month[isLeapYear(year1)][mon1] + 1)
+			{
+				mon1++;
+				day1 = 1;
+			}
+			if (mon1 == 13)
+			{
+				year1++;
+				mon1 = 1;
+			}
+			gap++;
+		}
+		end = clock();
+		cout << gap << endl;
+		cout << end - start << endl;
+	}
+}
