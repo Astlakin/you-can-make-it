@@ -1,0 +1,21 @@
+#include<cstdio>
+
+int main()
+{
+	int a, b;
+	int d;
+	scanf_s("%d %d %d", &a, &b, &d);
+	int	sum = a + b;;
+	int num=0;
+	int arr[1000] = {0};
+	do
+	{
+		arr[num++] = sum % d;
+		sum /= d;
+	} while (sum!=0);
+	for (int i = num - 1; i >= 0; i--)	//倒着输出
+	{
+		printf("%d", arr[i]);
+	}
+	return 0;
+}
