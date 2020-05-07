@@ -1,0 +1,32 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	char str[1000] = {0};
+	gets_s(str);
+	int row=0,col=0;
+	char words[80][80] = {0};
+	for (int i = 0; i < strlen(str); i++)
+	{
+		if (str[i] != ' ')
+		{
+			words[row][col++] = str[i];
+		}
+		else
+		{
+			words[row][col] = '\0' ;
+			row++;
+			col = 0;
+		}
+	}
+	for (int i = row; i >= 0; i--)
+	{
+		printf("%s", words[i]);
+		putchar(' ');
+	}
+	return 0;
+}
