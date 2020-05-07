@@ -30,3 +30,39 @@ int main()
 	}
 	return 0;
 }
+
+/*
+#include<iostream>
+#include<stdlib.h>
+#include<string.h>
+using std::cout;
+using std::endl;
+
+int count = 0;
+
+void dg(char* start, char* end)
+{
+	if (start > end)
+		return;
+	char* p = start;
+	while (*p != ' ' && *p != '\0')
+		p++;
+	*p = '\0';
+	int len = p - start;
+	char* now = (char*)malloc(len + 1);
+	strcpy_s(now, len + 1, start);
+	dg(p + 1, end);
+	if (p != end)
+		printf(" %s", now);
+	else
+		printf("%s", now);
+	free(now);
+}
+
+int main()
+{
+	char str[1000];
+	scanf_s("%[^\n]", str, 1000);
+	dg(str, str + strlen(str));
+}
+*/
