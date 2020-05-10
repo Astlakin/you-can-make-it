@@ -1,0 +1,37 @@
+#include<cstdio>
+
+char S[100][5] = {0};
+char temp[5] = { 0 };
+int hashtable[26 * 26 * 26 + 10] = {0};
+
+int hashFunc(char S[],int len)
+{
+	int id=0;
+	for (int i = 0; i < len; i++)
+	{
+		id = id * 26 + (S[i] - 'A');
+	}
+	return id;
+}
+
+int main()
+{
+	int n, m;
+	scanf_s("%d %d", &n, &m);
+	for (int i = 0; i < n; i++)
+	{
+		//getchar();
+		scanf_s("%s",S[i],4);//gets_s(S[i]);
+		//printf("%s\n", S[i]);
+		int id = hashFunc(S[i], 3);
+		hashtable[id]++;
+	}
+	for (int j = 0; j < m; j++)
+	{
+		scanf_s("%s",temp,4);//gets_s(temp);
+		int id;
+		id = hashFunc(temp, 3);
+		printf("%d\n", hashtable[id]);
+	}
+	return 0;
+}
